@@ -65,5 +65,7 @@ dependencies {
         implementation project(':module-msg')
         //用户模块
         implementation project(':module-user')
+        //网络请求模块
+        implementation project(':module-api')
     }
 }

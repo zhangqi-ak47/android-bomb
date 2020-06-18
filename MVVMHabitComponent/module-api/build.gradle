@@ -1,0 +1,70 @@
+if (isBuildModule.toBoolean()) {
+    //作为独立App应用运行
+    apply plugin: 'com.android.application'
+} else {
+    //作为组件运行
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        if (isBuildModule.toBoolean()) {
+            applicationId rootProject.ext.android.applicationId
+        }
+
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            if (isBuildModule.toBoolean()) {
+                //独立运行
+                manifest.srcFile 'src/main/alone/AndroidManifest.xml'
+            } else {
+                //合并到宿主
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                resources {
+                    //正式版本时，排除alone文件夹下所有调试文件
+                    exclude 'src/main/alone/*'
+                }
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    //support
+    api rootProject.ext.support["design"]
+    //下拉刷新,上拉加载
+    api 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    //底部tabBar
+    api('me.majiajie:pager-bottom-tab-strip:2.2.5') {
+        exclude group: 'com.android.support'
+    }
+    //MVVMHabit
+//    implementation project(':mvvmhabit')
+//    api rootProject.ext.dependencies.MVVMHabit
+    //组件依赖基础库
+    api project(':library-base')
+    //内存泄漏测试
+    debugApi 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    debugApi 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+}
