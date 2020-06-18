@@ -8,6 +8,7 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+        multiDexEnabled true
     }
     sourceSets {
         main {
@@ -40,4 +41,7 @@ dependencies {
     api rootProject.ext.dependencies.MVVMHabit
     //阿里路由框架
     api rootProject.ext.dependencies["arouter-api"]
+
+    api rootProject.ext.dependencies["multidex"]
+    api rootProject.ext.dependencies["multidex-instrumentation"]
 }

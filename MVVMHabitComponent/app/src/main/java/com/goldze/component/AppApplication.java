@@ -1,5 +1,9 @@
 package com.goldze.component;
 
+import android.content.Context;
+
+import androidx.multidex.MultiDex;
+
 import com.goldze.base.config.ModuleLifecycleConfig;
 
 import me.goldze.mvvmhabit.base.BaseApplication;
@@ -10,6 +14,12 @@ import me.goldze.mvvmhabit.utils.KLog;
  */
 
 public class AppApplication extends BaseApplication {
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
