@@ -1,6 +1,6 @@
 package com.goldze.home.ui.viewmodel;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.base.ItemViewModel;

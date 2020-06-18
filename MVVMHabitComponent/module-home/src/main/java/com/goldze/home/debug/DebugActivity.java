@@ -3,7 +3,8 @@ package com.goldze.home.debug;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.goldze.home.BR;
 import com.goldze.home.R;

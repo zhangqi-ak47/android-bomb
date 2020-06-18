@@ -1,9 +1,9 @@
 package com.goldze.home.ui.fragment;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -13,6 +13,7 @@ import com.goldze.home.BR;
 import com.goldze.home.R;
 import com.goldze.home.databinding.FragmentHomeBinding;
 import com.goldze.home.ui.viewmodel.HomeViewModel;
+import com.google.android.material.tabs.TabLayout;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 import me.goldze.mvvmhabit.utils.ToastUtils;

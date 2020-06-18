@@ -1,8 +1,9 @@
 package com.goldze.sign.ui;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 

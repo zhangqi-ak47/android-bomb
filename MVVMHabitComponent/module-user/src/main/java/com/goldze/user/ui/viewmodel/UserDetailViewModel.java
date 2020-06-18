@@ -3,8 +3,11 @@ package com.goldze.user.ui.viewmodel;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.databinding.ObservableField;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.ObservableField;
+
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.launcher.ARouter;

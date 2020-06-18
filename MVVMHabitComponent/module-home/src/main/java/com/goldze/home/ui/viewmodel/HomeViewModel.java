@@ -1,9 +1,10 @@
 package com.goldze.home.ui.viewmodel;
 
 import android.app.Application;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableList;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableList;
 
 import com.goldze.home.R;
 import com.goldze.home.BR;

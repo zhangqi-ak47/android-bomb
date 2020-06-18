@@ -1,10 +1,12 @@
 package com.goldze.user.ui.viewmodel;
 
 import android.app.Application;
-import android.databinding.ObservableBoolean;
-import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
+
 import android.text.TextUtils;
 import android.view.View;
 

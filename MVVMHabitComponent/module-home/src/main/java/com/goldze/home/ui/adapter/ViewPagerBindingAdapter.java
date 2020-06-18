@@ -1,6 +1,6 @@
 package com.goldze.home.ui.adapter;
 
-import android.databinding.ViewDataBinding;
+import androidx.databinding.ViewDataBinding;
 import android.view.ViewGroup;
 
 import com.goldze.home.databinding.ItemViewpagerBinding;
