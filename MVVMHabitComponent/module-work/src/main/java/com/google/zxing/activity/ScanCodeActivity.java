@@ -1,6 +1,7 @@
 package com.google.zxing.activity;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,19 +19,17 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.ScreenUtils;
-import com.goldze.mvvmhabit.R;
-import com.goldze.mvvmhabit.databinding.ActivityScanCodeBinding;
-import com.goldze.mvvmhabit.game.GM;
 import com.goldze.mvvmhabit.game.NPC;
 import com.goldze.mvvmhabit.game.boss.BossVm;
 import com.goldze.mvvmhabit.game.role.BaseA;
 import com.goldze.mvvmhabit.game.store.CommonResponse;
 import com.goldze.mvvmhabit.game.store.CommonUI;
+import com.goldze.work.R;
+import com.goldze.work.databinding.ActivityScanCodeBinding;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
@@ -38,18 +37,17 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.FormatException;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
-import com.google.zxing.camera.CameraManager;
 import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.qrcode.QRCodeReader;
+import com.google.zxing.camera.CameraManager;
 import com.google.zxing.decoding.CaptureActivityHandler;
 import com.google.zxing.decoding.RGBLuminanceSource;
-import com.google.zxing.qrcode.QRCodeReader;
 import com.google.zxing.util.BitmapUtil;
 import com.google.zxing.util.Constant;
 import com.google.zxing.view.ViewfinderView;
 
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.Map;
 import java.util.Vector;
 
 public class ScanCodeActivity extends BaseA<ActivityScanCodeBinding, BossVm> implements SurfaceHolder.Callback {
@@ -61,7 +59,7 @@ public class ScanCodeActivity extends BaseA<ActivityScanCodeBinding, BossVm> imp
     private boolean playBeep;
     private boolean vibrate;
     private MediaPlayer mediaPlayer;
-    private ViewfinderView viewfinderView;
+    private com.google.zxing.view.ViewfinderView viewfinderView;
     private static final float BEEP_VOLUME = 0.10f;
     private ProgressDialog mProgress;
     private Bitmap scanBitmap;
@@ -247,6 +245,7 @@ public class ScanCodeActivity extends BaseA<ActivityScanCodeBinding, BossVm> imp
 
     private static final long VIBRATE_DURATION = 200L;
 
+    @SuppressLint("MissingPermission")
     private void playBeepSoundAndVibrate() {
         if (playBeep && mediaPlayer != null) {
             mediaPlayer.start();

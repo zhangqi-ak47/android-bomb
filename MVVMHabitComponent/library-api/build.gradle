@@ -1,4 +1,4 @@
-if (isBuildModule.toBoolean()) {
+if (isApiModule.toBoolean()) {
     //作为独立App应用运行
     apply plugin: 'com.android.application'
 } else {
@@ -12,13 +12,14 @@ android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         //如果是独立模块，则使用当前组件的包名
-        if (isBuildModule.toBoolean()) {
+        if (isApiModule.toBoolean()) {
             applicationId "com.goldze.mvvmhabit"
         }
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         //添加如下配置就OK了
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
@@ -31,7 +32,7 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
-            if (isBuildModule.toBoolean()) {
+            if (isApiModule.toBoolean()) {
                 //独立运行
                 manifest.srcFile 'src/main/alone/AndroidManifest.xml'
             } else {
@@ -62,7 +63,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
@@ -72,6 +72,7 @@ dependencies {
     api('me.majiajie:pager-bottom-tab-strip:2.2.5') {
         exclude group: 'com.android.support'
     }
+    testImplementation rootProject.ext.support["junit"]
 //    api project(':mvvmhabit')
     api rootProject.ext.dependencies.MVVMHabit
     implementation 'androidx.appcompat:appcompat:1.1.0'

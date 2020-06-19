@@ -61,6 +61,7 @@
                         android:layout_height="@dimen/dp50"
                         android:gravity="center"
                         binding:onClickCommand="@{viewModel.btnCommand}"
+                        binding:clickEffect='@{"#000000"}'
                         android:text="@{viewModel.stringData}"
                         tools:text="aaa"
                         android:textColor="@color/black"
