@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="textColor">#202020</color>
+    <color name="textColorHint">#A0A0A0</color>
+    <color name="textColorVice">#6C6C6C</color>
+    <color name="viewLineColor">#F0F0F0</color>
+
+    <!-- QRCode scanner color begin -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="laser_color">#0F0</color>
+    <color name="corner_color">#00FF00</color>
+    <color name="transprent">#00000000</color>
+    <color name="black">#000000</color>
+    <!-- QRCode scanner color end -->
+
+    <color name="_55000000">#55000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="_FFFFFF">#FFFFFF</color>
+    <color name="_333333">#333333</color>
+    <color name="_66333333">#66333333</color>
+    <color name="_999999">#999999</color>
+    <color name="_888888">#888888</color>
+    <color name="_FA6400">#FA6400</color>
+    <color name="_E5E5E5">#E5E5E5</color>
+</resources>

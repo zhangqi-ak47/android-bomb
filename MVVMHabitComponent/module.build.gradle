@@ -5,6 +5,9 @@ if (isBuildModule.toBoolean()) {
     //作为组件运行
     apply plugin: 'com.android.library'
 }
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -20,6 +23,13 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+        multiDexEnabled true
+        //添加如下配置就OK了
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        manifestPlaceholders = [
+                autosize_width : rootProject.ext.manifest["autosize-width"],
+                autosize_height: rootProject.ext.manifest["autosize-height"],
+        ]
     }
     sourceSets {
         main {
@@ -49,6 +59,10 @@ android {
     }
     dataBinding {
         enabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

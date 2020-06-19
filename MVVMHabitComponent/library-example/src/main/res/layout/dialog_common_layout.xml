@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp47"
+    android:layout_marginRight="@dimen/dp47"
+    android:background="@drawable/dialog_fillet_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dc_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp12"
+            android:gravity="center"
+            android:padding="@dimen/dp5"
+            android:textColor="#333333"
+            android:textSize="@dimen/sp18"
+            android:textStyle="bold"
+            tools:text="title" />
+
+        <View
+            android:id="@+id/dc_margin"
+            android:layout_width="@dimen/dp1"
+            android:layout_height="@dimen/dp13"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/dc_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginRight="@dimen/dp12"
+            android:layout_marginBottom="@dimen/dp20"
+            android:gravity="center"
+            android:padding="@dimen/dp5"
+            android:textColor="#333333"
+            android:textSize="@dimen/sp15"
+            android:textStyle="normal"
+            tools:text="content" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp05"
+        android:background="@color/_E5E5E5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50">
+
+        <Button
+            android:id="@+id/dc_yes"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:textColor="#1677FF"
+            android:textSize="@dimen/sp18"
+            android:textStyle="normal"
+            tools:text="yes" />
+
+        <View
+            android:id="@+id/dc_line"
+            android:layout_width="@dimen/dp05"
+            android:layout_height="match_parent"
+            android:background="@color/_E5E5E5" />
+
+        <Button
+            android:id="@+id/dc_no"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:textColor="#1677FF"
+            android:textSize="@dimen/sp18"
+            android:textStyle="bold"
+            tools:text="no" />
+
+    </LinearLayout>
+
+</LinearLayout>

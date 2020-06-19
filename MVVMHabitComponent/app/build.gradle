@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
-
+apply from: 'tinker-support.gradle'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -17,10 +19,38 @@ android {
             }
         }
         multiDexEnabled true
+        //添加如下配置就OK了
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        manifestPlaceholders = [
+                autosize_width : rootProject.ext.manifest["autosize-width"],
+                autosize_height: rootProject.ext.manifest["autosize-height"],
+        ]
+    }
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword 'test123'
+            storePassword 'test123'
+            storeFile file('test123.jks')
+        }
+        debug {
+//            keyAlias 'alphawallet'
+//            keyPassword 'alphawallet123456'
+//            storePassword 'alphawallet123456'
+//            storeFile file('../alphawallet.jks')
+        }
     }
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -45,9 +75,21 @@ android {
     dataBinding {
         enabled true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
+    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.14.3'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //宿主项目中判断组件是否需要独立运行
     if (isBuildModule.toBoolean()) {
@@ -66,7 +108,5 @@ dependencies {
         implementation project(':module-msg')
         //用户模块
         implementation project(':module-user')
-        //网络请求模块
-        implementation project(':module-api')
     }
 }

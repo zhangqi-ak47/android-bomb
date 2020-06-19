@@ -9,6 +9,12 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         multiDexEnabled true
+        //添加如下配置就OK了
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        manifestPlaceholders = [
+                autosize_width : rootProject.ext.manifest["autosize-width"],
+                autosize_height: rootProject.ext.manifest["autosize-height"],
+        ]
     }
     sourceSets {
         main {
@@ -37,11 +43,10 @@ dependencies {
     api rootProject.ext.support["appcompat-v7"]
     //公用资源在base中依赖
     api project(':library-res')
+    //示例资源在base中依赖
+    api project(':library-example')
     //核心基础库(由于这是例子, 所以这里采用远程依赖的方式, 可根据实际情况自行换成源码依赖，源码地址：https://github.com/goldze/MVVMHabit)
     api rootProject.ext.dependencies.MVVMHabit
     //阿里路由框架
     api rootProject.ext.dependencies["arouter-api"]
-
-    api rootProject.ext.dependencies["multidex"]
-    api rootProject.ext.dependencies["multidex-instrumentation"]
 }

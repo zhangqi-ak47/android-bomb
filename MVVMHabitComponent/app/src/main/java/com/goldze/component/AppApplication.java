@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.goldze.base.config.ModuleLifecycleConfig;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import me.goldze.mvvmhabit.base.BaseApplication;
 import me.goldze.mvvmhabit.utils.KLog;
@@ -26,6 +28,10 @@ public class AppApplication extends BaseApplication {
         //初始化组件(靠前)
         ModuleLifecycleConfig.getInstance().initModuleAhead(this);
         //....
+
+        Bugly.init(this, "", BuildConfig.DEBUG);
+        CrashReport.initCrashReport(getApplicationContext(), "", BuildConfig.DEBUG);
+
         //初始化组件(靠后)
         ModuleLifecycleConfig.getInstance().initModuleLow(this);
     }

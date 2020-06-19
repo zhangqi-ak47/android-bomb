@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ResourceName">
+
+    <data>
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+        <variable
+            name="viewModel"
+            type="com.goldze.mvvmhabit.game.boss.BossVm" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/layout_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_navigation_bar"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+<!--            <androidx.core.widget.NestedScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:fillViewport="true">-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp50"
+                        android:visibility="@{viewModel.visibilityData}"
+                        android:src="@mipmap/ic_launcher"/>
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp50"
+                        android:onClick="onClickView"
+                        android:text="@{viewModel.stringData}"
+                        android:gravity="center"
+                        tools:text="aa"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:textStyle="normal"/>
+
+                    <Button
+                        android:id="@+id/bt"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp50"
+                        android:gravity="center"
+                        binding:onClickCommand="@{viewModel.btnCommand}"
+                        android:text="@{viewModel.stringData}"
+                        tools:text="aaa"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        android:textStyle="normal"
+                        android:background="@mipmap/ic_launcher"/>
+
+                    <EditText
+                        android:id="@+id/et"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp50"
+                        android:maxLength="11"
+                        android:inputType="number"
+                        binding:addTextChangedListener="@{viewModel.textWatcher}"
+                        binding:onFocusChangeCommand="@{viewModel.focusCommand}"
+                        android:text="@={viewModel.stringData}"
+                        android:hint=""
+                        android:textCursorDrawable="@color/black"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        tools:text="aa"
+                        tools:hint="aa"
+                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        android:textStyle="normal"
+                        android:background="@null"/>
+
+                    <View
+                        android:id="@+id/vw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp10"
+                        android:layout_marginTop="@dimen/dp1"
+                        android:layout_marginBottom="@dimen/dp1"
+                        android:layout_marginLeft="@dimen/dp1"
+                        android:layout_marginRight="@dimen/dp1"
+                        android:paddingTop="@dimen/dp1"
+                        android:paddingBottom="@dimen/dp1"
+                        android:paddingLeft="@dimen/dp1"
+                        android:paddingRight="@dimen/dp1"
+                        android:background="@color/black"/>
+
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/layout_swipe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            binding:layoutManager="@{LayoutManagers.linear()}"/>
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                </LinearLayout>
+
+<!--            </androidx.core.widget.NestedScrollView>-->
+
+            <include layout="@layout/layout_empty_page"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>
